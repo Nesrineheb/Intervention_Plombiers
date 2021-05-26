@@ -8,9 +8,9 @@ import java.io.ObjectOutputStream
 import java.util.*
 
 private val TAG="storage"
-fun persistTache(context:Context, intervention: Intervention){
+fun persistIntervention(context:Context, intervention: Intervention){
     if(TextUtils.isEmpty(intervention.filename)){
-        intervention.filename=UUID.randomUUID().toString()+".tache"
+        intervention.filename=UUID.randomUUID().toString()+".intervention"
 
     }
     val fileOutput=context.openFileOutput(intervention.filename,Context.MODE_PRIVATE)//mode d'acces pour le fichier acces seulemnt a l application
@@ -18,28 +18,28 @@ fun persistTache(context:Context, intervention: Intervention){
     outputStream.writeObject(intervention)
     outputStream.close()
 }
-fun loadTache(context: Context):MutableList<Intervention>{
-    val taches= mutableListOf<Intervention>()
-    val tacheDir=context.filesDir
-    for (filename in tacheDir.list()){
-        val tache= loadTache(context, filename)
-        Log.i(TAG,"Tache chargee $tache")
-        taches.add(tache)
+fun loadIntervention(context: Context):MutableList<Intervention>{
+    val interventions= mutableListOf<Intervention>()
+    val interventionDir=context.filesDir
+    for (filename in interventionDir.list()){
+        val intervention= loadIntervention(context, filename)
+
+        interventions.add(intervention)
 
 
     }
-    return taches
+    return interventions
 }
 
-fun deleteTache(context: Context, intervention: Intervention){
+fun deleteIntervention(context: Context, intervention: Intervention){
     context.deleteFile(intervention.filename)
 }
 
-private fun loadTache(context:Context,filename:String):Intervention{
+private fun loadIntervention(context:Context,filename:String):Intervention{
     val fileIntput=context.openFileInput(filename)//mode d'acces pour le fichier acces seulemnt a l application
     val  inputStream=ObjectInputStream(fileIntput)
-    val tache=inputStream.readObject() as Intervention
+    val intervention=inputStream.readObject() as Intervention
     inputStream.close()
-    return tache
+    return intervention
 
 }

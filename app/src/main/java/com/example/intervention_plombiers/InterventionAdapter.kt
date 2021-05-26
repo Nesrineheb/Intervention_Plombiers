@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class InterventionAdapter(val taches: List<Intervention>, val itemClickListener: MainActivity )
+class InterventionAdapter(val interventions: List<Intervention>, val itemClickListener: MainActivity )
     : RecyclerView.Adapter<InterventionAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,20 +20,20 @@ class InterventionAdapter(val taches: List<Intervention>, val itemClickListener:
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewItem = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_tacheco, parent, false)
+            .inflate(R.layout.item_intervention, parent, false)
         return ViewHolder(viewItem)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val tache = taches[position]
+        val intervention = interventions[position]
         holder.cardView.setOnClickListener(itemClickListener)
         holder.cardView.tag = position
-        holder.nomView.text = tache.nom
-        holder.dateView.text = tache.date
+        holder.nomView.text = intervention.nom
+        holder.dateView.text = intervention.date
 
     }
 
     override fun getItemCount(): Int {
-        return taches.size
+        return interventions.size
     }
 }

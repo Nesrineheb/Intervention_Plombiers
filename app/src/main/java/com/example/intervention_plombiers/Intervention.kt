@@ -6,8 +6,13 @@ import java.io.Serializable
 data class Intervention(
     var nom: String? ="",
     var date: String? ="",
+    var type: String? ="",
+    var numero: String? ="",
+
     var filename: String? =""):Parcelable, Serializable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
@@ -17,6 +22,8 @@ data class Intervention(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(nom)
         parcel.writeString(date)
+        parcel.writeString(type)
+        parcel.writeString(numero)
         parcel.writeString(filename)
     }
 

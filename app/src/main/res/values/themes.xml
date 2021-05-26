@@ -3,17 +3,17 @@
 
         <!-- Primary brand color. -->
     <style name="Theme.GestionnaireDeTâches" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryVariant">@color/teal_700</item>
+        <item name="colorPrimaryVariant">@color/t_blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/t_white</item>
+        <item name="colorSecondaryVariant">@color/t_white</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/t_blued</item>
+        <item name="colorPrimaryDark">@color/t_blued</item>
+        <item name="colorAccent">@color/t_yellow</item>
     </style>
 </resources>

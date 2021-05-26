@@ -8,6 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="t_blue">#273c75</color>
+    <color name="t_white">#f5f6fa</color>
+    <color name="t_yellow">#fbc531</color>
+    <color name="t_blued">#192a56</color>
+
     <color name="colorPrimary">#8ac249</color>
     <color name="colorPrimaryDark">#679e38</color>
     <color name="colorAccent">#FE5622</color>

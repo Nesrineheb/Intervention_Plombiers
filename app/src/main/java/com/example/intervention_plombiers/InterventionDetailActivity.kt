@@ -20,17 +20,19 @@ class InterventionDetailActivity : AppCompatActivity(), DatePickerDialog.OnDateS
 
 
     companion object {
-        val REQUEST_EDIT_Tache = 1
-        val EXTRA_Tache = "tache"
-        val EXTRA_Tache_INDEX = "tacheIndex"
-        val ACTION_DELETE_TACHE = "com.example.gestionnairedetches.actions.ACTION_DELETE_TACHE"
-        val ACTION_SAVE_TACHE= "com.example.gestionnairedetches.actions.ACTION_SAVE_TACHE"
+        val REQUEST_EDIT_Intervention = 1
+        val EXTRA_Intervention = "intervention"
+        val EXTRA_Intervention_INDEX = "interventionIndex"
+        val ACTION_DELETE = "actions.ACTION_DELETE"
+        val ACTION_SAVE= "actions.ACTION_SAVE"
     }
 
 
     lateinit var intervention: Intervention
-    var tacheIndex:Int = -1
+    var interventionIndex:Int = -1
     lateinit var nomView: TextView
+    lateinit var typeView: TextView
+    lateinit var numeroView: TextView
     lateinit var dateView: TextView
     var day =12
     var month =5
@@ -43,10 +45,10 @@ class InterventionDetailActivity : AppCompatActivity(), DatePickerDialog.OnDateS
     override fun onCreate(savedInstanceState: Bundle?) {
         
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tache_detail)
+        setContentView(R.layout.activity_intervention_detail)
 
-        intervention = intent.getParcelableExtra<Intervention>(EXTRA_Tache)
-        tacheIndex = intent.getIntExtra(EXTRA_Tache_INDEX, -1)
+        intervention = intent.getParcelableExtra<Intervention>(EXTRA_Intervention)
+        interventionIndex = intent.getIntExtra(EXTRA_Intervention_INDEX, -1)
 
 
 
@@ -56,8 +58,12 @@ val toolbar = findViewById(R.id.toolbar) as Toolbar
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         nomView = findViewById(R.id.nom) as TextView
         dateView = findViewById(R.id.date_view) as TextView
+        typeView = findViewById(R.id.type) as TextView
+        numeroView = findViewById(R.id.numero) as TextView
         nomView.text = intervention.nom
         dateView.text = intervention.date
+        typeView.text=intervention.type
+        numeroView.text=intervention.numero
         val dateButton= findViewById(R.id.button) as Button
         dateButton.setOnClickListener{
 
@@ -82,7 +88,7 @@ val toolbar = findViewById(R.id.toolbar) as Toolbar
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.activity_tache_detail,menu)
+        menuInflater.inflate(R.menu.activity_intevention_detail,menu)
 
 
         return true
@@ -92,7 +98,7 @@ val toolbar = findViewById(R.id.toolbar) as Toolbar
 
         when (item.itemId) {
             R.id.action_save ->{
-                saveTache()
+                save()
                 return true  }
             R.id.action_delete ->{
                 Log.i("meeeesage debug","delete action")
@@ -107,7 +113,7 @@ val toolbar = findViewById(R.id.toolbar) as Toolbar
         val confirmFragment = ConfirmDeleteDialogueFragment()
         confirmFragment.listener = object :ConfirmDeleteDialogueFragment.ConfirmDeleteListener {
             override fun onDialogPositiveClick() {
-                deleteTache()
+                delete()
             }
             override fun onDialogNegativeClick() {
 
@@ -115,20 +121,22 @@ val toolbar = findViewById(R.id.toolbar) as Toolbar
         confirmFragment.show(fragmentManager, "delete confirm")
     }
 
-    fun saveTache() {
+    fun save() {
         intervention.nom= nomView.text.toString()
-        //tache.date = dateView.text.toString()
+        intervention.type= typeView.text.toString()
+        intervention.numero= numeroView.text.toString()
+
 
         intervention.date = LocalDate.of(year,month+1,day).format(formatter).toString()
-        intent = Intent(ACTION_SAVE_TACHE)
-        intent.putExtra(EXTRA_Tache, intervention as Parcelable)
-        intent.putExtra(EXTRA_Tache_INDEX, tacheIndex)
+        intent = Intent(ACTION_SAVE)
+        intent.putExtra(EXTRA_Intervention, intervention as Parcelable)
+        intent.putExtra(EXTRA_Intervention_INDEX, interventionIndex)
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
-    fun deleteTache() {
-        intent = Intent(ACTION_DELETE_TACHE)
-        intent.putExtra(EXTRA_Tache_INDEX, tacheIndex)
+    fun delete() {
+        intent = Intent(ACTION_DELETE)
+        intent.putExtra(EXTRA_Intervention_INDEX, interventionIndex)
         setResult(Activity.RESULT_OK, intent)
         finish()
     }

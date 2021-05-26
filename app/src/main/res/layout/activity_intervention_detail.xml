@@ -7,17 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".InterventionDetailActivity">
 
-
     <TextView
         android:id="@+id/date_view"
         android:layout_width="87dp"
         android:layout_height="21dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
 
 
         app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -26,8 +25,10 @@
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="152dp"
         android:layout_height="55dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginTop="20dp"
+
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:backgroundTint="@color/colorAccent"
         android:backgroundTintMode="add"
         android:text="selectionner date"
@@ -36,16 +37,46 @@
 
     <EditText
         android:id="@+id/nom"
-        android:layout_width="340dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="168dp"
-        android:ems="10"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="136dp"
+        android:ems="7"
         android:inputType="textPersonName"
         android:text="Nom de la intervention"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/type"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="136dp"
+        android:ems="7"
+        android:inputType="textPersonName"
+        android:text="exp:"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/numero"
+        android:layout_width="213dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="208dp"
+        android:ems="7"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.838"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -57,7 +88,41 @@
         android:background="?attr/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
 
-        app:title="Crée Tache"
+        app:title="Intervention"
+        app:titleTextColor="@color/t_white"
         tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="192dp"
+        android:layout_marginLeft="192dp"
+        android:layout_marginTop="104dp"
+        android:text="Nom du plombier "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="224dp"
+        android:text="Numero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="104dp"
+        android:text="Type de l'intervention "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
